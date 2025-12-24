@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Departamento de Detectives</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #2b0a3d; /* morado oscuro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .card {
+            background-color: #3a1456;
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background-color: #6a1b9a;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #7b2cbf;
+        }
+
+        .error {
+            margin-top: 15px;
+            color: #ffb3b3;
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="login">
+        <h1>Departamento de Detectives</h1>
+        <p>Ingrese número de matrícula para acceder</p>
+        <input type="password" id="codigo" placeholder="Número de matrícula">
+        <button onclick="validar()">Ingresar</button>
+        <div class="error hidden" id="error">
+            Revise su credencial para obtener el código de matrícula
+        </div>
+    </div>
+
+    <div class="card hidden" id="bienvenida">
+        <h1>Bienvenida Conny</h1>
+        <p>El lugar de encuentro es:</p>
+        <strong>-33.42039090020892, -70.6087094840245</strong>
+    </div>
+
+    <script>
+        function validar() {
+            const codigoCorrecto = "398741283281";
+            const codigoIngresado = document.getElementById("codigo").value;
+            const error = document.getElementById("error");
+
+            if (codigoIngresado === codigoCorrecto) {
+                document.getElementById("login").classList.add("hidden");
+                document.getElementById("bienvenida").classList.remove("hidden");
+            } else {
+                error.classList.remove("hidden");
+            }
+        }
+    </script>
+
+</body>
+</html>
